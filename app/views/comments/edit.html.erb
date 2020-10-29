@@ -1,0 +1,17 @@
+<h1>Edite ce commentaire</h1>
+<p>le gossip est le n°<%= @gossip.id%></p>
+<p>l'auteur est : <%= @gossip.user.first_name%></p>
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+	<!--input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"-->
+  <!--input type="text" name="gossip_text"-->
+  <!--input type="submit" value="Valider"-->
+  <%= label_tag 'Content' %>
+  <%= text_area_tag 'content', @comment.content %>
+  <br /> <br />
+  <%= submit_tag "Edite le commentaire" %>
+<% end %>
+<br /><br />
+<h5>Suppression du commentaire</h5>
+<%= link_to "Supprimer le commentaire", gossip_comment_path(@comment.gossip.id, @comment.id), :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+
+

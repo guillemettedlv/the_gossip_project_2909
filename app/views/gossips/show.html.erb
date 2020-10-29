@@ -1,0 +1,27 @@
+<section class="jumbotron text-center bg-white">
+<h1 class="jumbotron-heading"><%= @gossip.title %></h1>
+<p class="card-subtitle mb-2 text-muted">Ecrit par : <%= @author.first_name %> | <%= link_to "En savoir + sur l'auteur", user_path(@author.id) %>
+|  Le <%= @gossip.created_at %></p>
+<p class="card-subtitle mb-2 text-muted">Ecrit à : <%= @author.city.name %> | <%= link_to "En savoir + sur la ville", city_path(@author.id) %></p>
+<p class="lead text-muted">Contenu : <%= @gossip.content %></p>
+
+<p <button type="button" class="btn btn-sm btn-outline-secondary"><a href ='/gossip/<%=@gossip.id%>/edit'>Modifier</a> </button></p>
+<p <button type="button" class="btn btn-sm btn-outline-secondary"><a href ='/gossip/<%=@gossip.id%>' data-confim="Etes-vous sûr de vouloir supprimer ce potin ?" data-method="delete">Supprimer</a> </button> </p>
+
+</section>
+
+<!--Tags Part-->
+<h5>Tags :</h5>
+<% @gossip.tags.each do |tag| %>
+<p><%= tag.title %>|</p>
+<% end %><br /><br />
+
+<!--Comments Part with a .each-->
+<h5>Créer un nouveau commentaire pour ce gossip</h5>
+<%= link_to "Commenter ce gossip", new_gossip_comment_path(@gossip.id) %><br /><br />
+<h5>Commentaires sur ce potin:</h5>
+    <% @comments.each do |comment| %>
+			<p>Message : <%= comment.content %>
+      |  Ecrit par: <%= comment.user.first_name %></p>
+
+    <% end %>

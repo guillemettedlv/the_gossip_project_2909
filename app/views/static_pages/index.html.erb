@@ -1,0 +1,23 @@
+<section class="jumbotron text-center bg-white">
+  <h1 class="jumbotron-heading">Welcome !</h1>
+  <p class="lead text-muted">Ici c'est notre super site de potins, il est chouette, non ?</p>
+</section>
+
+  <div class="container">
+    <div class="row">
+            <% @gossips.each do |gossip| %>
+              <div class = "col-md-4">
+                    <div class="card-body">
+                      <h2 class="card-title"><%= gossip.title %></h2>
+                      <p><%= gossip.content %></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary"><a href ='/gossip/<%=gossip.id%>'>Voir plus...</a></button>
+    
+                    </div>
+                </div>
+              </div>  
+            </div>
+          <% end %>
+        </div>
+    </div>
