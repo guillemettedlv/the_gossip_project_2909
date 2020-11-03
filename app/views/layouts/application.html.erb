@@ -30,8 +30,14 @@
         </li>
         <% if logged_in? %>
         <li class="nav-item">
-          <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, :class =>"nav-link text-white" %>
+        <%= link_to "Se connecter/s'inscrire", new_session_path, :class =>"nav-link text-white" %>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to 'Créer son compte', new_user_path, :class =>"nav-link text-dark" %>
+              <%= link_to 'Se connecter', new_session_path, :class =>"nav-link text-dark" %>
+            </div>
+          </div>
         </li>
+
       <% else %>
       <li class="nav-item">
         <%= link_to "Se connecter/s'inscrire", new_session_path, :class =>"nav-link text-white" %>

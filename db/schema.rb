@@ -63,17 +63,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_095705) do
     t.index ["recipient_id"], name: "index_join_table_user_private_messages_on_recipient_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "likeable_type"
-    t.bigint "likeable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
-    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
   create_table "private_messages", force: :cascade do |t|
     t.text "content"
     t.bigint "sender_id"
